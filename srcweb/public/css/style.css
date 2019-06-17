@@ -317,7 +317,7 @@ textarea.input {
      margin-bottom: 20px;
 }
 
-}
+
  .section .section-title h2 {
      text-transform: capitalize;
      font-size: 28px;
@@ -859,7 +859,7 @@ figure.figure-img {
 
 .login-form
 {
-     margin-top: 150px;
+     margin-top: 50px;
 }
 
 .login-header {
@@ -871,14 +871,17 @@ figure.figure-img {
 
 /* Text fields' focus effect */
 .login input[type="email"]:focus,
+.login input[type="text"]:focus,
 .login input[type="password"]:focus {
   border-color: #33b5e5;
 }
-.login input[type="email"]:hover 
-.login input[type="password"]:hover
+.login input[type="email"]:hover,
+.login input[type="text"]:hover,
+.login input[type="password"]:hover{
  border-color:#28d;
   
 }
+
 .login input[type="submit"] {
   background:#33b5e5 ;
   border-color: transparent;
@@ -1056,24 +1059,16 @@ input[type=submit]:hover {
     -moz-transition:.5s ease-in;
 }
 
-.login-title {
-    padding: 30px 0;
-}
-.login-title h1 {
-    font-size:35px;
-    letter-spacing: 4px;
-}
 .login {
-    width: 370px;
-    margin: 14px auto;
+    width: 500px;
+    margin: auto;
     font-size: 15px;
 }
 .login-header {
-    padding: 13px;
-    font-size: 1.2em;
+    font-size: 20px;
 }
 .form_grid {
-  padding:20px;
+  padding:5px;
 }
 
 .w3_bottom {
@@ -1098,14 +1093,14 @@ input[type=submit]:hover {
     font-size: 12px;
 }
 
-.login input[type="Email"], .login input[type="password"], .login input[type="otp"] {
+.login input[type="email"], .login input[type="text"], .login input[type="password"], .login input[type="otp"] {
     margin: 20px 0px;;
     border-width: 1px;
     border-style: solid;
     padding: 13px;
     outline: none;
      background: #fff;
-     color:#ccc6c6;
+     color:#000;
       box-sizing: border-box;
      display: block;
      width: 100%;
@@ -1132,6 +1127,7 @@ input[type=submit]:hover {
     text-align: center;
     margin-top:35px;
 }
+
 
 
 

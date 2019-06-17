@@ -17,6 +17,8 @@
 		<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:700%7CNunito:300,600" rel="stylesheet"> 
 
 		<link rel="stylesheet" href="/css/font-awesome.min.css">
+		<link type="text/css" rel="stylesheet" href="/css/jquery.datetimepicker.min.css">
+
 </head>
 <body>
 	<header>
@@ -32,35 +34,14 @@
 						<!-- nav -->
 							<ul class="nav-menu nav navbar-nav">
 								<li><a href="index.html">Trang chủ</a></li>
-								<li class="cat-1"><a href="pagecategory.html">Kinh Tế</a>
-
+								{{#each this.parents}}
+								<li class="cat-{{CatID}}"><a href="pagecategory.html">{{CatName}}</a>
 								<ul>
-								<li class="cat-1"><a href="pagecategory2.html">Trong nước</a></li>
-								<li class="cat-1"><a href="pagecategory2.html">Quốc tế</a></li>
-								<li class="cat-1"><a href="pagecategory2.html">Thị trường</a></li>
-							
-								</ul></li>
-								<li class="cat-2"><a href="pagecategory.html">Công nghệ</a>
-								<ul>
-								<li class="cat-2"><a href="pagecategory2.html">Sản phẩm mới</a></li>
-								<li class="cat-2"><a href="pagecategory2.html">Đánh giá sản phẩm</a></li>
-								<li class="cat-2"><a href="pagecategory2.html">Game</a></li>
-								</ul></li>
-								<li class="cat-3"><a href="pagecategory.html">Thể thao</a>
-								<ul>
-								<li class="cat-3"><a href="pagecategory2.html">Bóng đá</a></li>
-								<li class="cat-3"><a href="pagecategory2.html">Bóng rổ</a></li>
-								<li class="cat-3"><a href="pagecategory2.html">Bóng chuyền</a></li>
-								<li class="cat-3"><a href="pagecategory2.html">Quần vợt</a></li>
+									{{#each this.child}}
+								<li class="cat-{{Parent}}"><a href="pagecategory2.html">{{ChildName}}</a></li>
+								{{/each}}
 								</ul>
-								</li>
-								<li class="cat-4"><a href="pagecategory.html">Sức khỏe</a>
-								<ul>
-								<li class="cat-4"><a href="pagecategory2.html">Các bệnh</a></li>
-								<li class="cat-4"><a href="pagecategory2.html">Khỏe đẹp</a></li>
-								<li class="cat-4"><a href="pagecategory2.html">Tư vấn</a></li>
-								<li class="cat-4"><a href="pagecategory2.html">Thực đơn</a></li>
-								</ul></li>
+								</li>{{/each}}
 							</ul>
 						<!-- /nav -->
 
@@ -73,7 +54,7 @@
 							  <ul class="dropdown-menu" role="menu">
 							    <li><a href="login.html">Đăng nhập</a></li>
 							    <li><a href="signup.html">Đăng ký</a></li>
-							    <li><a href="admin/categories">Quản lý tài khoản</a></li>
+							    <li><a href="">Quản lý tài khoản</a></li>
 							    <li><a href="dangbai.html">Viết bài</a></li>
 							  </ul>
 							</div>
@@ -167,7 +148,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 		<!-- jQuery Plugins -->
 		<script src="/js/jquery.min.js"></script>
+		<script src="/js/jquery.validate.min.js"></script>
+		<script src="/js/jquery.datetimepicker.full.min.js"></script>
 		<script src="/js/bootstrap.min.js"></script>
 		<script src="/js/main.js"></script>
+
 </body>
 </html>

@@ -1,0 +1,33 @@
+
+  <div class="aside-widget">
+							<div class="section-title">
+								<h2>Quản lý thành viên</h2>
+							</div>
+    </div>
+   <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">UID</th>
+      <th scope="col">Tên</th>
+      <th scope="col">Email</th>
+      <th scope="col">Vai trò</th>
+      <th scope="col">Quản lý</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each this.category}}
+    <tr>
+      <th scope="row">{{UID}}</th>
+      <td>{{UName}}</td>
+      <td>{{UEmail}}</td>
+      <td>{{RoleName}}</td>
+      <td><button class="btn"><i class="fa fa-bars"></i></button>
+          <button class="btn"><i class="fa fa-close"></i></button>
+          <button class="btn"><i class="fa fa-edit "></i></button>     
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+ 

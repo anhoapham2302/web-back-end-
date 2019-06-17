@@ -1,3 +1,4 @@
+
 (function($) {
 	"use strict"
 
@@ -26,4 +27,78 @@
 
 	
 
+
+	$('#frmRegister').validate({
+		rules: {
+		  username: {
+			required: true,
+			remote: {
+				url: '/signup/isavailable'
+			}
+		  },
+		  password: {
+			required: true,
+			minlength: 6
+		  },
+		  confirm: {
+			required: true,
+			equalTo: $('[name="password"]')
+		  },
+		  name: {
+			required: true,
+		  },
+		  email: {
+			required: true,
+			email: true
+		  },
+		  dob: {
+			required: true,
+		  }
+		},
+		messages: {
+		  username: {
+			required: 'Your username is required.',
+			remote: 'Your username has been taken, please take another.'
+		  },
+		  password: {
+			required: 'Your password is required.',
+			minlength: 'Your password must have at least 6 characters.'
+		  },
+		  confirm: {
+			required: 'Your password does not match.',
+			equalTo: 'Your password does not match.'
+		  },
+		  name: {
+			required: 'Valid full name is required.',
+		  },
+		  email: {
+			required: 'Please enter a valid email address.',
+			email: 'Please enter a valid email address.'
+		  },
+		  dob: {
+			required: 'Valid date of birth is required.',
+		  }
+		},
+  
+		errorElement: 'small',
+		errorClass: 'help-block text-danger',
+		validClass: 'is-valid',
+		highlight: function (e) {
+		  $(e).removeClass('is-valid').addClass('is-invalid');
+		},
+		unhighlight: function (e) {
+		  $(e).removeClass('is-invalid').addClass('is-valid');
+		}
+	  });
+  
+	  $('#txtDOB').datetimepicker({
+		format: 'd/m/Y',
+		timepicker: false,
+		mask: true,
+	  });
+  
+
 })(jQuery);
+
+
+
