@@ -1,0 +1,33 @@
+ <div class="aside-widget">
+							<div class="section-title">
+								<h2>Chỉnh sửa chuyên mục con</h2>      
+							</div>
+    </div>
+     <div class="form-group">
+        <label for="txtTagID">Chuyên mục cha</label>
+        <input readonly type="text" class="form-control" style="height: 40px; width:250px;" id="txtTagID" name="CatName" value="{{this.child.CatName}}">
+      </div>
+    <form method="POST" action="/admin/childcategory/update">
+   
+      <div class="form-group">
+        <label for="txtTagID">ID</label>
+        <input readonly type="text" class="form-control" style="height: 40px; width:250px;" id="txtTagID" name="ChildID" value="{{this.child.ChildID}}">
+      </div>
+      <div class="form-group">
+        <label for="txtTagName">Tags</label>
+        <input type="text" class="form-control"style="height: 40px; width:250px;" id="txtTagName" name="ChildName" autofocus
+          value="{{this.child.ChildName}}" placeholder="Nhập tên chuyên mục">
+      </div>
+      <a class="btn btn-primary" href="/admin/category" role="button">
+        <i class="fa fa-backward" aria-hidden="true"></i>
+        Quay lại
+      </a>
+      <button type="submit" class="btn btn-danger" formaction="/admin/childcategory/delete">
+        <i class="fa fa-trash-o" aria-hidden="true"></i>
+        Xóa
+      </button>
+      <button type="submit" class="btn btn-success">
+        <i class="fa fa-check" aria-hidden="true"></i>
+        Lưu
+      </button>
+    </form>

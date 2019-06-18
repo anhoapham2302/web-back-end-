@@ -1,0 +1,28 @@
+ <div class="aside-widget">
+							<div class="section-title">
+								<h2>Chỉnh sửa Tag</h2>      
+							</div>
+    </div>
+    <form method="POST" action="/admin/tag/update">
+      <div class="form-group">
+        <label for="txtTagID">ID</label>
+        <input readonly type="text" class="form-control" style="height: 40px; width:250px;" id="txtTagID" name="TagID" value="{{this.tag.TagID}}">
+      </div>
+      <div class="form-group">
+        <label for="txtTagName">Tags</label>
+        <input type="text" class="form-control"style="height: 40px; width:250px;" id="txtTagName" name="TagName" autofocus
+          value="{{this.tag.TagName}}" placeholder="Nhập tên tag">
+      </div>
+      <a class="btn btn-primary" href="/admin/tag" role="button">
+        <i class="fa fa-backward" aria-hidden="true"></i>
+        Quay lại
+      </a>
+      <button type="submit" class="btn btn-danger" formaction="/admin/tag/delete">
+        <i class="fa fa-trash-o" aria-hidden="true"></i>
+        Xóa
+      </button>
+      <button type="submit" class="btn btn-success">
+        <i class="fa fa-check" aria-hidden="true"></i>
+        Lưu
+      </button>
+    </form>

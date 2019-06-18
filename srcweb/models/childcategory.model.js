@@ -9,6 +9,9 @@ module.exports = {
         return db.load(`select * from childcategory, category where Parent = ${catID} and Parent = CatID`)
     },
 
+    single: id => {
+        return db.load(`select * from childcategory, category where ChildID = ${id} and Parent = CatID`);
+      },
 
     add: entity =>{
         return db.add(`childcategory`, entity);

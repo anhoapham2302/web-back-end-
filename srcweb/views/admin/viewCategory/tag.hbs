@@ -1,0 +1,53 @@
+
+
+  <div class="aside-widget">
+							<div class="section-title">
+								<h2>Quản lý Tag</h2>
+          <button type="submit" class="btn btn-success " data-toggle="modal" data-target="#exampleModal2">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        Thêm
+      </button>
+							</div>
+    </div>
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content modal-sm">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Thêm Tag</h5>
+      </div>
+      <div class="modal-body">
+       <form class = "post-reply" method="POST" action="/admin/tag/add">
+      <div class="form-group">
+        <input type="text" class="form-control" style="height: 40px; width:250px;" id="txtTagName" name="TagName" autofocus placeholder="Tên Tag">
+      </div>
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+      <button type="submit" class="btn btn-primary">Xác nhận</button>
+    </form>
+      </div>
+    </div>
+  </div>
+</div>
+   <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Tên</th>
+      <th scope="col">Quản lý</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each this.tag}}
+    <tr>
+      <th scope="row">{{TagID}}</th>
+      <td>{{TagName}}</td>
+      <td><button class="btn btn-primary" onclick="window.location.href = '/admin/tag/edit/{{TagID}}'"><i class="fa fa-edit "></i></button>
+      </td>
+    </tr>
+ 
+   {{/each}}
+     </tbody>
+   </table>
+   
+
+
+ 
