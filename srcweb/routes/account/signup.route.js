@@ -1,7 +1,9 @@
 var express =  require('express');
 var bcrypt = require('bcrypt');
 var moment = require('moment');
+var passport = require('passport');
 var userModel = require('../../models/user.model');
+var auth = require('../../middlewares/auth');
 
 var router = express.Router();
 
@@ -16,11 +18,11 @@ router.get('/isavailable', (req, res, next)=> {
         })
 });
 
-router.get('/', (req, res, next)=> {
+router.get('/signup', (req, res, next)=> {
     res.render('account/sign');
 });
 
-router.post('/', (req, res, next)=>{
+router.post('/signup', (req, res, next)=>{
     var saltRounds = 10;
     var hash = bcrypt.hashSync(req.body.password, saltRounds);
     var dob = moment(req.body.dob, 'DD/MM/YYYY').format('YYYY-MM-DD');
@@ -37,12 +39,40 @@ router.post('/', (req, res, next)=>{
     }
 
     userModel.add(entity).then(id =>{
-        res.render('account/sign');
+        res.redirect('account/login');
     });
 })
 
 router.get('/login', (req, res, next)=> {
-    res.end('LOGIN');
+    res.render('account/login');
 });
+
+router.post('/login', (req, res, next) => {
+    passport.authenticate('local', (err, user, info) => {
+      if (err)
+        return next(err);
+  
+      if (!user) {
+        return res.render('account/login', {
+
+          err_message: info.message
+        })
+      }
+  
+      req.logIn(user, err => {
+        if (err)
+          return next(err);
+  
+        return res.redirect('/home');
+  
+        
+      });
+    })(req, res, next);
+   
+  })
+  
+  router.get('/profile', auth, (req, res, next)=>{
+      res.end('profile');
+  })
 
 module.exports = router;

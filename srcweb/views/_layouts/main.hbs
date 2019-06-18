@@ -41,23 +41,29 @@
 								<li class="cat-{{Parent}}"><a href="pagecategory2.html">{{ChildName}}</a></li>
 								{{/each}}
 								</ul>
-								</li>{{/each}}
+								</li>{{/each}}								
 							</ul>
 						<!-- /nav -->
 
 						<!-- search & aside toggle -->
 						<div class="nav-btns">
+							{{#if isAuthenticated}}	
 							<div class="btn-group">
 							  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-							    Tài khoản <span class="caret"></span>
+							    Chào {{authUser.UName}} <span class="caret"></span>
 							  </button>
 							  <ul class="dropdown-menu" role="menu">
-							    <li><a href="login.html">Đăng nhập</a></li>
-							    <li><a href="signup.html">Đăng ký</a></li>
-							    <li><a href="">Quản lý tài khoản</a></li>
-							    <li><a href="dangbai.html">Viết bài</a></li>
+							    <li><a href="login.html">Xem hồ sơ</a></li>
+								{{#if isQuanly}}
+							    <li><a href="signup.html">Quản lý</a></li>
+								{{/if}}
+							    <li><a href="">Đăng xuất</a></li>							
 							  </ul>
 							</div>
+							{{else}}													
+							<button><i class="fa fa-sign-in"> Đăng nhập</i></button>
+							<button><i class="fa fa-user-plus"> Đăng ký</i></button>
+							{{/if}}
 							<button class="search-btn"><i class="fa fa-search"></i></button>
 							<div class="search-form">
 								<input class="search-input" type="text" name="search" placeholder="Enter Your Search ...">

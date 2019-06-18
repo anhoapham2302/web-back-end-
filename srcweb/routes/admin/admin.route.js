@@ -4,7 +4,7 @@ var userModel = require('../../models/user.model');
 var childcategoryModel = require('../../models/childcategory.model');
 
 var router = express.Router();
-
+var auth = require('../../middlewares/auth');
 
 
 router.get('/category', (req, res)=> {
@@ -36,7 +36,7 @@ router.get('/category/:id/childcategory', (req, res)=>{
     
 });
 
-router.get('/user', (req, res)=> {
+router.get('/user',auth, (req, res)=> {
     var p = userModel.all();
     res.locals.useractive = true;
     p.then(rows => {
