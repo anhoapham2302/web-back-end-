@@ -18,7 +18,6 @@
 
 		<link rel="stylesheet" href="/css/font-awesome.min.css">
 		<link type="text/css" rel="stylesheet" href="/css/jquery.datetimepicker.min.css">
-
 </head>
 <body>
 	<header>
@@ -46,6 +45,7 @@
 						<!-- /nav -->
 
 						<!-- search & aside toggle -->
+						<form id="frmSignout" action="/account/logout" method="POST"></form>
 						<div class="nav-btns">
 							{{#if isAuthenticated}}	
 							<div class="btn-group">
@@ -55,14 +55,14 @@
 							  <ul class="dropdown-menu" role="menu">
 							    <li><a href="login.html">Xem hồ sơ</a></li>
 								{{#if isQuanly}}
-							    <li><a href="signup.html">Quản lý</a></li>
+							    <li><a href="/{{authUser.RoleEng}}/dashboard">Quản lý</a></li>
 								{{/if}}
-							    <li><a href="">Đăng xuất</a></li>							
+							    <li><a href="javascript: $('#frmSignout').submit();">Đăng xuất</a></li>							
 							  </ul>
 							</div>
 							{{else}}													
-							<button><i class="fa fa-sign-in"> Đăng nhập</i></button>
-							<button><i class="fa fa-user-plus"> Đăng ký</i></button>
+							<button onclick="window.location.href = '/account/login';"><i class="fa fa-sign-in"> Đăng nhập</i></button>
+							<button onclick="window.location.href = '/account/signup';"><i class="fa fa-user-plus"> Đăng ký</i></button>
 							{{/if}}
 							<button class="search-btn"><i class="fa fa-search"></i></button>
 							<div class="search-form">
@@ -158,6 +158,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		<script src="/js/jquery.datetimepicker.full.min.js"></script>
 		<script src="/js/bootstrap.min.js"></script>
 		<script src="/js/main.js"></script>
+		<script
+ src="https://cdn.tiny.cloud/1/eis9day0px8s4z670d2892vgfpz6qtfcribyl8au4i1xeyi5/tinymce/5/tinymce.min.js"></script>
 
 </body>
 </html>

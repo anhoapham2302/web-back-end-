@@ -1,7 +1,87 @@
 <div class="aside-widget">
 							<div class="section-title">
-								<h2>Quản lý chuyên mục</h2>
+								{{#with child.[0]}}
+    <h2>{{CatName}}</h2>
+    {{/with}}
 							</div>
+               
+       <button type="submit" class="btn btn-primary"  data-toggle="modal" data-target="#exampleModal1">
+        <i class="fa fa-edit" aria-hidden="true" ></i>
+        Đổi tên
+      </button>
+      <button type="submit" class="btn btn-success " data-toggle="modal" data-target="#exampleModal2">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        Thêm
+      </button>
+      <button type="submit" class="btn btn-danger " data-toggle="modal" data-target="#exampleModal3">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+        Xóa
+      </button>      
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content modal-sm">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Đổi tên chuyên mục</h5>
+      </div>
+      <div class="modal-body">
+       <form class = "post-reply" method="POST" action="/admin/category/update">
+      <div class="form-group">
+        	{{#with child.[0]}}
+                <input type="hidden" class="form-control" id="txtCatID" name="CatID" value="{{CatID}}">
+                {{/with}}
+        <input type="text" class="form-control" style="height: 40px; width:250px;" id="txtCatName" name="CatName" autofocus placeholder="Tên chuyên mục">
+      </div>
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+      <button type="submit" class="btn btn-primary">Xác nhận</button>
+    </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content modal-sm">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Thêm chuyên mục con</h5>
+      </div>
+      <div class="modal-body">
+       <form class = "post-reply" method="POST" action="/admin/childcategory/add">
+      <div class="form-group">
+        	{{#with child.[0]}}
+                <input type="hidden" class="form-control" id="txtCatID" name="Parent" value="{{CatID}}">
+                {{/with}}
+        <input type="text" class="form-control" style="height: 40px; width:250px;" id="txtCatName" name="ChildName" autofocus placeholder="Tên chuyên mục">
+      </div>
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+      <button type="submit" class="btn btn-primary">Xác nhận</button>
+    </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content modal-sm">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xóa chuyên mục</h5>
+      </div>
+      <div class="modal-body">
+       <form class = "post-reply" method="POST" action="/admin/category/delete">
+      <div class="form-group">
+        	{{#with child.[0]}}
+                <input type="hidden" class="form-control" id="txtCatID" name="CatID" value="{{CatID}}">
+                {{/with}}
+        <div class="alert alert-danger" role="alert">
+  Bạn muốn xóa chuyên mục?
+</div>
+      </div>
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+      <button type="submit" class="btn btn-primary">Xác nhận</button>
+    </form>
+      </div>
+    </div>
+  </div>
+</div>
     </div>
    <table class="table table-striped">
   <thead>
@@ -16,11 +96,56 @@
     <tr>
       <th scope="row">{{ChildID}}</th>
       <td>{{ChildName}}</td>
-      <td><button class="btn"><i class="fa fa-bars"></i></button>
-          <button class="btn"><i class="fa fa-close"></i></button>
-          <button class="btn"><i class="fa fa-edit "></i></button>     
+      <td><button class="btn btn-primary" data-toggle="modal" data-target="#editchild"><i class="fa fa-edit "></i></button>
+           
+        <button class="btn btn-danger"data-toggle="modal" data-target="#deletechild"><i class="fa fa-trash"></i></button>         
       </td>
     </tr>
-    {{/each}}
+ 
   </tbody>
-</table>
+<div class="modal fade" id="deletechild" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content modal-sm">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xóa chuyên mục con</h5>
+      </div>
+      <div class="modal-body">
+       <form class = "post-reply" method="POST" action="/admin/childcategory/delete/{{ChildID}}">
+      <div class="form-group">
+
+                <input type="hidden" class="form-control" id="txtChildID" name="ChildID" value="{{ChildID}}">
+        <div class="alert alert-danger" role="alert">
+  Bạn muốn xóa chuyên mục này?
+</div>
+      </div>
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+      <button type="submit" class="btn btn-primary">Xác nhận</button>
+    </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="editchild" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content modal-sm">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Đổi tên chuyên mục con</h5>
+      </div>
+      <div class="modal-body">
+       <form class = "post-reply" method="POST" action="/admin/childcategory/update">
+      <div class="form-group">
+      
+                <input type="hidden" class="form-control" id="txtChildID" name="ChildID" value="{{ChildID}}">
+                 <input type="hidden" class="form-control" id="txtParent" name="Parent" value="{{Parent}}">
+       
+        <input type="text" class="form-control" style="height: 40px; width:250px;" id="txtChildName" name="ChildName" autofocus placeholder="Tên chuyên mục">
+      </div>
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+      <button type="submit" class="btn btn-primary">Xác nhận</button>
+    </form>
+      </div>
+    </div>
+  </div>
+</div>
+   {{/each}}
+   </table>

@@ -12,5 +12,21 @@ module.exports = {
     },
     add: entity =>{
         return db.add('category', entity);
-    }
+    },
+
+    single: id => {
+        return db.load(`select * from category where CatID = ${id}`);
+      },    
+    
+
+  update: entity => {
+    return db.update('category', 'CatID', entity);
+  },
+
+  delete: id => {
+    return db.delete('category', 'CatID', id);
+  }
+
+
+
 };

@@ -14,7 +14,19 @@ router.get('/', (req, res)=> {
         })
 });
 
+router.get('/dangbai', (req, res, next) => {
+  res.render('writer/dangbai', {layout: 'admin.hbs'});
+})
 
+router.post('/dangbai', (req, res, next) => {
+
+})
+
+router.get('/upload', (req, res, next) => {
+  res.render('vwDemo/upload');
+})
+
+module.exports = router;
 
 
 module.exports = router;

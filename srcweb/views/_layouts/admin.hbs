@@ -45,6 +45,7 @@
 						<!-- /nav -->
 
 						<!-- search & aside toggle -->
+						<form id="frmSignout" action="/account/logout" method="POST"></form>
 						<div class="nav-btns">
 							{{#if isAuthenticated}}	
 							<div class="btn-group">
@@ -53,15 +54,15 @@
 							  </button>
 							  <ul class="dropdown-menu" role="menu">
 							    <li><a href="login.html">Xem hồ sơ</a></li>
-								{{#if notDocgia}}
+								{{#if isQuanly}}
 							    <li><a href="signup.html">Quản lý</a></li>
 								{{/if}}
-							    <li><a href="">Đăng xuất</a></li>							
+							    <li><a href="javascript: $('#frmSignout').submit();">Đăng xuất</a></li>							
 							  </ul>
 							</div>
 							{{else}}													
-							<button><i class="fa fa-sign-in"> Đăng nhập</i></button>
-							<button><i class="fa fa-user-plus"> Đăng ký</i></button>
+							<button onclick="window.location.href = '/account/login';"><i class="fa fa-sign-in"> Đăng nhập</i></button>
+							<button onclick="window.location.href = '/account/signup';"><i class="fa fa-user-plus"> Đăng ký</i></button>
 							{{/if}}
 							<button class="search-btn"><i class="fa fa-search"></i></button>
 							<div class="search-form">
@@ -83,10 +84,16 @@
           <div class="row">
           <div class="col-md-3">
             <div class="list-group">
-
+	{{#if isAdmin}}
 	<a href="/admin/user" class="list-group-item list-group-item-action {{#if useractive}}active{{/if}}">Quản lý thành viên</a>
  	<a href="/admin/category" class="list-group-item list-group-item-action {{#if cateactive}}active{{/if}}">Quản lý chuyên mục</a>
   	<a href="#" class="list-group-item list-group-item-action">Quản lý bài viết</a>
+	{{/if}}
+	{{#if isWriter}}
+	<a href="/admin/user" class="list-group-item list-group-item-action {{#if useractive}}active{{/if}}">Bài chờ duyệt</a>
+ 	<a href="/admin/category" class="list-group-item list-group-item-action {{#if cateactive}}active{{/if}}">Thêm bài viết</a>
+  	<a href="#" class="list-group-item list-group-item-action">Quản lý bài viết</a>
+	{{/if}}
 </div>
           </div>
 		  <div class="col-md-9">
@@ -183,5 +190,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		<script src="/js/jquery.datetimepicker.full.min.js"></script>
 		<script src="/js/bootstrap.min.js"></script>
 		<script src="/js/main.js"></script>
+		<script src="https://cdn.tiny.cloud/1/eis9day0px8s4z670d2892vgfpz6qtfcribyl8au4i1xeyi5/tinymce/5/tinymce.min.js"></script>
+
 </body>
 </html>

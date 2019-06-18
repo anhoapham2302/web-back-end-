@@ -1,25 +1,20 @@
-<div class="page-header">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-10">
-							<ul class="page-header-breadcrumb">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="pagecategory.html">About US</a></li>
-							</ul>
-							<h1>Thông tin về chúng tôi</h1>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- /Page Header -->
-<form class="form-inline" method="POST">
-  <div class="form-group mx-sm-3 mb-2">
-    <label for="inputPassword2" class="sr-only">Password</label>
-    <input type="text" class="form-control" id="txtCatName" name="CatName" autofocus placeholder="Enter Email">
-  </div>
-  <button type="submit" class="btn btn-success">
+ <div class="aside-widget">
+							<div class="section-title">
+								<h2>Thêm chuyên mục</h2>      
+							</div>
+    </div>
+
+    <form class = "post-reply" method="POST">
+      <div class="form-group">
+        <input type="text" class="form-control" style="height: 40px; width:250px;" id="txtCatName" name="CatName" autofocus placeholder="Tên chuyên mục">
+      </div>
+      <a class="btn btn-primary" href="/admin/category" role="button">
+        <i class="fa fa-backward" aria-hidden="true"></i>
+        List
+      </a>
+      <button type="submit" class="btn btn-success">
         <i class="fa fa-check" aria-hidden="true"></i>
         Save
       </button>
+    </form>
 
-</form>

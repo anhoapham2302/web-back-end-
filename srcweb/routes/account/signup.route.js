@@ -75,4 +75,9 @@ router.post('/login', (req, res, next) => {
       res.end('profile');
   })
 
+  router.post('/logout',auth, (req, res, next)=>{
+      req.logOut();
+      res.redirect('/account/login');
+  })
+
 module.exports = router;

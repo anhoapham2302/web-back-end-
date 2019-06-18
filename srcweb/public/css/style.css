@@ -1159,3 +1159,15 @@ input[type=submit]:hover {
     }
 }
 
+.form-cat{
+     margin: 20px 0px;;
+     border-width: 1px;
+     border-style: solid;
+     padding: 13px;
+     outline: none;
+      background: #fff;
+      color:#000;
+       box-sizing: border-box;
+      display: block;
+      width: 100%;
+}

@@ -6,6 +6,11 @@ module.exports = (req, res, next) => {
       {
           res.locals.isQuanly = true;
       }
+      if(req.user.URole == 1)
+      {
+          res.locals.isAdmin = true;
+      }
     }
+
     next();
   }

@@ -10,7 +10,7 @@ module.exports = {
     },
   
     singleByUserName: userName => {
-      return db.load(`select * from user where UUsername = '${userName}'`);
+      return db.load(`select * from user, role where UUsername = '${userName}' and URole = RoleID`);
     },
   
     add: entity => {
