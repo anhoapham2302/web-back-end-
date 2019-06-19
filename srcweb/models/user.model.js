@@ -6,7 +6,7 @@ module.exports = {
     },
   
     single: id => {
-      return db.load(`select * from user where UID = ${id}`);
+      return db.load(`select * from user,role where UID = ${id} and URole = RoleID`);
     },
   
     singleByUserName: userName => {
@@ -18,9 +18,7 @@ module.exports = {
     },
   
     update: entity => {
-      var id = entity.UID;
-      delete entity.UID;
-      return db.update('user', 'UID', entity, id);
+      return db.update('user', 'UID', entity);
     },
   
     delete: id => {

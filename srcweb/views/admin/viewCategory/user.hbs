@@ -21,9 +21,8 @@
       <td>{{UName}}</td>
       <td>{{UEmail}}</td>
       <td>{{RoleName}}</td>
-      <td><button class="btn"><i class="fa fa-bars"></i></button>
-          <button class="btn"><i class="fa fa-close"></i></button>
-          <button class="btn"><i class="fa fa-edit "></i></button>     
+      <td>
+          <button class="btn btn-primary" onclick="window.location.href = '/admin/user/{{UID}}'"><i class="fa fa-edit "></i></button>     
       </td>
     </tr>
     {{/each}}

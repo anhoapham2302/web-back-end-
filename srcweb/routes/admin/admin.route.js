@@ -194,4 +194,17 @@ router.post('/tag/delete', (req, res) => {
       })     
   });
 
+  router.get('/user/:id',auth, (req, res)=>{
+    var id = req.params.id;
+    userModel.single(id)
+    .then(rows=>{
+      res.render('admin/viewCategory/chitet-user', {
+        user: rows[0],
+        layout: 'admin.hbs'
+      })
+    }).catch(err => {
+      console.log(err);
+    })    
+  })
+
 module.exports = router;

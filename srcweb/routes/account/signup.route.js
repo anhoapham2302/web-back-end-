@@ -8,14 +8,14 @@ var auth = require('../../middlewares/auth');
 var router = express.Router();
 
 router.get('/isavailable', (req, res, next)=> {
-    var user = req.query.username;
-    userModel.singleByUserName(user).then(rows =>
-        {
-            if(rows.length > 0){
-                return res.json(false);
-            }
-            return res.json(true);
-        })
+  var user = req.query.username;
+  userModel.singleByUserName(user).then(rows =>
+      {
+          if(rows.length > 0){
+              return res.json(false);
+          }
+          return res.json(true);
+      })
 });
 
 router.get('/signup', (req, res, next)=> {
@@ -25,7 +25,6 @@ router.get('/signup', (req, res, next)=> {
 router.post('/signup', (req, res, next)=>{
     var saltRounds = 10;
     var hash = bcrypt.hashSync(req.body.password, saltRounds);
-    var dob = moment(req.body.dob, 'DD/MM/YYYY').format('YYYY-MM-DD');
     var curdate = moment().format('YYYY-MM-DD');
     var entity ={
         UUsername: req.body.username,
@@ -33,15 +32,17 @@ router.post('/signup', (req, res, next)=>{
         UName: req.body.name,
         UNick: null,
         UEmail: req.body.email,
-        UDOB: dob,
+        UDOB: req.body.dob,
         URole: 4,
         UDateCreate: curdate
     }
-
     userModel.add(entity).then(id =>{
-        res.redirect('account/login');
+        res.end('LOGIN');
+        
     });
-})
+});
+
+
 
 router.get('/login', (req, res, next)=> {
     res.render('account/login');
@@ -69,15 +70,37 @@ router.post('/login', (req, res, next) => {
       });
     })(req, res, next);
    
-  })
+  });
   
   router.get('/profile', auth, (req, res, next)=>{
       res.render('account/profile');
-  })
+  });
 
   router.post('/logout',auth, (req, res, next)=>{
       req.logOut();
       res.redirect('/account/login');
-  })
+  });
+
+
+  router.get('/profile/edit/:id', auth, (req, res) => {
+    var id = req.params.id;
+    userModel.single(id).then(rows => {
+        res.render('account/profile-edit', {
+          user: rows[0],
+        });    
+    }).catch(err => {
+      console.log(err);
+    });
+  });
+
+  router.post('/profile/update', auth, (req,res)=>{
+    userModel.update(req.body)
+    .then(n => {
+      //res.redirect('/account/profile');
+      res.redirect('/home');
+    }).catch(err => {
+      console.log(err);  
+    })
+  });
 
 module.exports = router;

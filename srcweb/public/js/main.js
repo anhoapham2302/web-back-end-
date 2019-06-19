@@ -33,7 +33,7 @@
 		  username: {
 			required: true,
 			remote: {
-				url: '/signup/isavailable'
+				url: '/account/isavailable'
 			}
 		  },
 		  password: {
@@ -92,7 +92,7 @@
 	  });
   
 	  $('#txtDOB').datetimepicker({
-		format: 'd/m/Y',
+		format: 'Y-m-d',
 		timepicker: false,
 		mask: true,
 	  });
