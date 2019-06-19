@@ -3,23 +3,25 @@
 			<div class="section">
 				<div class="container">
 					<!-- row-->
-					<div class="row">
-					<div class="col-md-8">
+					<div class="row">	
+					<!-- /post -->
+					<div class="col-md-12">
+						<div class="col-md-8">
 						<div class="section-title">
 							<h2>Tin nổi bật</h2>
 						</div>
-					</div>			
-					<!-- /post -->
+					</div>		
 					<div class="col-md-8">
+						
 						<div class="post post-thumb">
-							<a class="post-img" href="pagechitiet.html"><img src="./img/bia-bongda1.jpg" alt=""></a>
+							<a class="post-img" href="/post/view/{{this.lcPost1.PostID}}"><img src="{{this.lcPost1.AnhBia}}" alt=""></a>
 							<div class="post-body">
 								<div class="post-meta">
-									<a class="post-category cat-3" href="pagecategory.html">Thể thao</a>
-									<a class="post-category cat-3" href="pagecategory2.html">Bóng đá</a>
-									<span class="post-date">02-05-2019</span>
+									<a class="post-category cat-{{this.lcPost1.CatID}}" href="/post/category/{{this.lcPost1.CatID}}">{{this.lcPost1.CatName}}</a>
+									<a class="post-category cat-{{this.lcPost1.CatID}}" href="/post/childcategory/{{this.lcPost1.ChildID}}">{{this.lcPost1.ChildName}}</a>
+									<span class="post-date">{{this.lcPost1.NgayXuatBanFormat}}</span>
 								</div>
-								<h3 class="post-title"><a href="pagechitiet.html">Mourinho chê bai MU, ghen tị với Guardiola và Klopp</a></h3>
+								<h3 class="post-title"><a href="/post/view/{{this.lcPost1.PostID}}">{{this.lcPost1.TieuDe}}</a></h3>
 							</div>
 						</div>
 					</div>
@@ -53,6 +55,7 @@
 						<!--post-->
 								
 					</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -72,14 +75,14 @@
 					<div class="col-md-6">		
 										
 						<div class="post">
-							<a class="post-img" href="/post/{{PostID}}"><img src="{{AnhBia}}" alt=""></a>
+							<a class="post-img" href="/post/view/{{PostID}}"><img style="height: 200px; width:350px" src="{{AnhBia}}" alt=""></a>
 							<div class="post-body">
 								<div class="post-meta">
-									<a class="post-category cat-3" href="pagecategory.html">Thể thao</a>
-									<a class="post-category cat-3" href="pagecategory2.html">Bóng đá</a>
+									<a class="post-category cat-{{CatID}}" href="/post/category/{{CatID}}">{{CatName}}</a>
+									<a class="post-category cat-{{CatID}}" href="/post/childcategory/{{ChildID}}">{{ChildName}}</a>
 									<span class="post-date">{{NgayXuatBanFormat}}</span>
 								</div>
-								<h3 class="post-title"><a href="/post/{{PostID}}">{{{TieuDe}}}</a></h3>
+								<h3 class="post-title"><a href="/post/view/{{PostID}}">{{{TieuDe}}}</a></h3>
 							</div>
 						</div>
 							

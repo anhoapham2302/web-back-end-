@@ -1,0 +1,35 @@
+<div class="section">	
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8">
+						
+						<!-- tags -->
+						<div class="aside-widget">
+                            {{#with postchildcat.[0]}}
+							<div class="section-title">
+							<h2 href="#">{{CatName}}</h2>
+							</div>
+                            {{/with}}
+						</div>
+						<!-- /tags -->
+							
+                            {{#each this.postchildcat}}
+							<div class="post post-row">
+							<a class="post-img" href="/post/view/{{PostID}}"><img style="height: 180px; width:310px" src="{{AnhBia}}" alt=""></a>
+							<div class="post-body">
+								<div class="post-meta">
+									<a class="post-category cat-{{CatID}}" href="/post/category/{{CatID}}">{{CatName}}</a>
+									<a class="post-category cat-{{CatID}}" href="pagecategory2.html">{{ChildName}}</a>
+									<span class="post-date">{{NgayXuatBanFormat}}</span>
+								</div>
+								<h3 class="post-title"><a href="/post/view/{{PostID}}">{{TieuDe}}</a></h3>
+								<p>{{TomTat}}</p>
+							</div>
+						</div>
+                        {{/each}}
+				</div>
+		</div>				
+			</div>
+            </div>
+
+

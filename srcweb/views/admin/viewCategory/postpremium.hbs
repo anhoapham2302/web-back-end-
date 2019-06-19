@@ -1,0 +1,77 @@
+           
+   <style>
+/* Style The Dropdown Button */
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+</style>
+           <div class="aside-widget">
+                            
+							<div class="section-title">
+							<h2 href="#">Bài viết Premium</h2>
+                             <div class="dropdown">
+                        <button class="dropbtn">Lọc</button>
+                        <div class="dropdown-content">
+                            <a href="/admin/post/all">Tất cả</a>
+                            <a href="/admin/post/premium">Premium</a>
+                            <a href="#">Link 3</a>
+                        </div>
+                        </div>
+			
+						</div>
+            {{#each this.post}}
+							<div class="post post-row">
+							<a class="post-img" href="/post/view/{{PostID}}"><img style="height: 180px; width:310px" src="{{AnhBia}}" alt=""></a>
+							<div class="post-body">
+								<div class="post-meta">
+									<a class="post-category cat-{{CatID}}" href="/post/category/{{CatID}}">{{CatName}}</a>
+									<a class="post-category cat-{{CatID}}" href="/post/childcategory/{{ChildID}}">{{ChildName}}</a>
+									<span class="post-date">{{NgayXuatBanFormat}}</span>
+								</div>
+								<h3 class="post-title"><a href="/post/view/{{PostID}}">{{TieuDe}}</a></h3>
+								<p>{{TomTat}}</p>
+							</div>
+						</div>
+            {{/each}}

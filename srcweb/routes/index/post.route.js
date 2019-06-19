@@ -17,17 +17,39 @@ router.get('/', (req, res, next)=> {
     });
 });
 
-router.get('/:id', (req, res)=>{
+router.get('/view/:id', (req, res)=>{
     var id = req.params.id;
-    res.locals.cateactive = true;
     postModel.singleByPostID(id)
     .then(rows=>{
         
         res.render('index/baichitiet',{
             post: rows
         })
-    });
-    
+    });    
+});
+
+router.get('/category/:id', (req, res)=>{
+    var id = req.params.id;
+    postModel.allbycat(id)
+    .then(rows=>{
+        
+        res.render('index/list-cat',{
+            postcat: rows
+        })
+    });    
+
+});
+
+router.get('/childcategory/:id', (req, res)=>{
+    var id = req.params.id;
+    postModel.allbychildcat(id)
+    .then(rows=>{
+        
+        res.render('index/list-childcat',{
+            postchildcat: rows
+        })
+    });    
+
 });
 
 

@@ -34,10 +34,10 @@
 							<ul class="nav-menu nav navbar-nav">
 								<li><a href="index.html">Trang chủ</a></li>
 								{{#each this.parents}}
-								<li class="cat-{{CatID}}"><a href="pagecategory.html">{{CatName}}</a>
+								<li class="cat-{{CatID}}"><a href="/post/category/{{CatID}}">{{CatName}}</a>
 								<ul>
 									{{#each this.child}}
-								<li class="cat-{{Parent}}"><a href="pagecategory2.html">{{ChildName}}</a></li>
+								<li class="cat-{{Parent}}"><a href="/post/childcategory/{{ChildID}}">{{ChildName}}</a></li>
 								{{/each}}
 								</ul>
 								</li>{{/each}}
@@ -87,7 +87,8 @@
 	{{#if isAdmin}}
 	<a href="/admin/user" class="list-group-item list-group-item-action {{#if useractive}}active{{/if}}">Quản lý thành viên</a>
  	<a href="/admin/category" class="list-group-item list-group-item-action {{#if cateactive}}active{{/if}}">Quản lý chuyên mục</a>
-  	<a href="#" class="list-group-item list-group-item-action">Quản lý bài viết</a>
+	<a href="/admin/tag" class="list-group-item list-group-item-action {{#if cateactive}}active{{/if}}">Quản lý tag</a>
+  	<a href="/admin/post/all" class="list-group-item list-group-item-action {{#if postactive}}active{{/if}}">Quản lý bài viết</a>
 	{{/if}}
 	{{#if isWriter}}
 	<a href="/admin/user" class="list-group-item list-group-item-action {{#if useractive}}active{{/if}}">Bài chờ duyệt</a>

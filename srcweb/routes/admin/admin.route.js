@@ -3,6 +3,7 @@ var categoryModel = require('../../models/category.model');
 var userModel = require('../../models/user.model');
 var childcategoryModel = require('../../models/childcategory.model');
 var tagModel = require('../../models/tag.model');
+var postModel = require('../../models/post.model');
 
 var router = express.Router();
 var auth = require('../../middlewares/auth');
@@ -41,6 +42,36 @@ router.get('/user',auth, (req, res)=> {
 
    
 });
+
+router.get('/post/all',auth, (req, res)=> {
+  var p = postModel.all();
+  res.locals.postactive = true;
+  p.then(rows => {
+      res.render('admin/viewCategory/postall', {
+          post: rows,
+          layout: 'admin.hbs'
+      })
+      
+  })
+  .catch(err=>{
+      console.log(err);
+  });
+});
+router.get('/post/premium',auth, (req, res)=> {
+  var p = postModel.premiumpost();
+  res.locals.postactive = true;
+  p.then(rows => {
+      res.render('admin/viewCategory/postpremium', {
+          post: rows,
+          layout: 'admin.hbs'
+      })
+      
+  })
+  .catch(err=>{
+      console.log(err);
+  });
+});
+
 
 router.get('/category/:id/childcategory', (req, res)=>{
     var id = req.params.id;
@@ -194,14 +225,31 @@ router.post('/tag/delete', (req, res) => {
       })     
   });
 
-  router.get('/user/:id',auth, (req, res)=>{
-    var id = req.params.id;
+  router.get('/user/:id@:role',auth, (req, res)=>{
+    var id = req.params.id;    
+    var role = req.params.role;
+    if(role == 1)
+    {
+      res.locals.isAdminProfile = true;
+    }
+    if(role == 2)
+    {
+      res.locals.isEditerProfile = true;
+    }
+    if(role == 3)
+    {
+      res.locals.isWriterProfile = true;
+    }
+    if(role == 4)
+    {
+      res.locals.isUserProfile = true;
+    }
     userModel.single(id)
-    .then(rows=>{
+    .then(rows=>{    
       res.render('admin/viewCategory/chitet-user', {
         user: rows[0],
         layout: 'admin.hbs'
-      })
+      })    
     }).catch(err => {
       console.log(err);
     })    

@@ -34,10 +34,10 @@
 							<ul class="nav-menu nav navbar-nav">
 								<li><a href="index.html">Trang chủ</a></li>
 								{{#each this.parents}}
-								<li class="cat-{{CatID}}"><a href="pagecategory.html">{{CatName}}</a>
+								<li class="cat-{{CatID}}"><a href="/post/category/{{CatID}}">{{CatName}}</a>
 								<ul>
 									{{#each this.child}}
-								<li class="cat-{{Parent}}"><a href="pagecategory2.html">{{ChildName}}</a></li>
+								<li class="cat-{{Parent}}"><a href="/post/childcategory/{{ChildID}}">{{ChildName}}</a></li>
 								{{/each}}
 								</ul>
 								</li>{{/each}}								
