@@ -72,7 +72,7 @@ router.post('/login', (req, res, next) => {
   })
   
   router.get('/profile', auth, (req, res, next)=>{
-      res.end('profile');
+      res.render('account/profile');
   })
 
   router.post('/logout',auth, (req, res, next)=>{

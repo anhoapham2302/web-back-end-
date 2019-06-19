@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
       if(req.user.URole == 1)
       {
           res.locals.isAdmin = true;
-      }
+      }   
     }
 
     next();
