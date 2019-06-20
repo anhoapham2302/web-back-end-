@@ -72,6 +72,21 @@ router.get('/post/premium',auth, (req, res)=> {
   });
 });
 
+router.get('/post/choxuatban',auth, (req, res)=> {
+  var p = postModel.choxuatban();
+  res.locals.postactive = true;
+  p.then(rows => {
+      res.render('admin/viewCategory/choxuatban', {
+          post: rows,
+          layout: 'admin.hbs'
+      })
+      
+  })
+  .catch(err=>{
+      console.log(err);
+  });
+});
+
 
 router.get('/category/:id/childcategory', (req, res)=>{
     var id = req.params.id;

@@ -19,4 +19,10 @@ module.exports = {
     premiumpost: () => {
         return db.load(`SELECT *, DATE_FORMAT(NgayXuatBan, '%d-%m-%Y') NgayXuatBanFormat FROM post , category, childcategory where ChuyenMuc1 = CatID and ChuyenMuc2= ChildID and Premium = 'Y'`);
     },
-};
+    choxuatban: () => {
+        return db.load(`SELECT *, DATE_FORMAT(NgayXuatBan, '%d-%m-%Y') NgayXuatBanFormat FROM post , category, childcategory where ChuyenMuc1 = CatID and ChuyenMuc2= ChildID and DATEDIFF(CURDATE(), NgayXuatBan) < 0`);
+    },
+    add: entity =>{
+        return db.add('post', entity)
+    }
+}
