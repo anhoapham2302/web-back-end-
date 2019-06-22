@@ -54,7 +54,7 @@
                              <div class="dropdown">
                         <button class="dropbtn">Lọc</button>
                         <div class="dropdown-content">
-                            <a href="/admin/post/all">Tất cả</a>
+                            <a href="/admin/post/all">Xuất bản</a>
                             <a href="/admin/post/premium">Premium</a>
                             <a href="/admin/post/choxuatban">Chờ xuất bản</a>
                         </div>
@@ -63,16 +63,16 @@
 						</div>
             {{#each this.post}}
 							<div class="post post-row">
-							<a class="post-img" href="/post/view/{{PostID}}"><img style="height: 180px; width:310px" src="{{AnhBia}}" alt=""></a>
+							<a class="post-img" href="#"><img style="height: 180px; width:310px" src="{{AnhBia}}" alt=""></a>
 							<div class="post-body">
 								<div class="post-meta">
-									<a class="post-category cat-{{CatID}}" href="/post/category/{{CatID}}">{{CatName}}</a>
-									<a class="post-category cat-{{CatID}}" href="/post/childcategory/{{ChildID}}">{{ChildName}}</a>
+									<a class="post-category cat-{{CatID}}" href="#">{{CatName}}</a>
+									<a class="post-category cat-{{CatID}}" href="#">{{ChildName}}</a>
 									<span class="post-date">{{NgayXuatBanFormat}}</span>
 								</div>
-								<h3 class="post-title"><a href="/post/view/{{PostID}}">{{TieuDe}}</a></h3>
+								<h3 class="post-title"><a href="#">{{TieuDe}}</a></h3>
 								<p>{{TomTat}}</p>
-                                 <button type="submit" class="btn btn-primary">
+                                 <button type="submit" class="btn btn-primary " onclick="window.location.href = '/admin/post/edit/{{PostID}}@{{Premium}}@5'">
                                     <i class="fa fa-edit" aria-hidden="true" ></i>
                                     Quản lý
                                 </button>     

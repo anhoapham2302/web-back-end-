@@ -37,7 +37,7 @@ router.post('/signup', (req, res, next)=>{
         UDateCreate: curdate
     }
     userModel.add(entity).then(id =>{
-        res.end('LOGIN');
+      res.redirect('/home');
         
     });
 });
@@ -96,8 +96,8 @@ router.post('/login', (req, res, next) => {
   router.post('/profile/update', auth, (req,res)=>{
     userModel.update(req.body)
     .then(n => {
-      //res.redirect('/account/profile');
-      res.redirect('/home');
+     
+      res.redirect('/admin/user');
     }).catch(err => {
       console.log(err);  
     })

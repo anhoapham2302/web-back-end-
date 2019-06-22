@@ -19,7 +19,7 @@
 							<div class="post-body">
 								<div class="post-meta">
 									<a class="post-category cat-{{CatID}}" href="/post/category/{{CatID}}">{{CatName}}</a>
-									<a class="post-category cat-{{CatID}}" href="pagecategory2.html">{{ChildName}}</a>
+									<a class="post-category cat-{{CatID}}" href="/post/childcategory/{{ChildID}}">{{ChildName}}</a>
 									<span class="post-date">{{NgayXuatBanFormat}}</span>
 								</div>
 								<h3 class="post-title"><a href="/post/view/{{PostID}}">{{TieuDe}}</a></h3>
@@ -28,7 +28,29 @@
 						</div>
                         {{/each}}
 				</div>
-		</div>				
+		</div>		
+		<div class="row">
+      <div class="col-sm-12">
+		<div class="col-sm-3"></div>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            {{#each this.pages}}
+            {{#if active}}
+            <li class="page-item active" aria-current="page">
+              <a class="page-link" href="javascript:;">
+                {{value}} <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            {{else}}
+            <li class="page-item">
+              <a class="page-link" href="?page={{value}}">{{value}}</a>
+            </li>
+            {{/if}}
+            {{/each}}
+          </ul>
+        </nav>
+      </div>
+    </div>		
 			</div>
             </div>
 

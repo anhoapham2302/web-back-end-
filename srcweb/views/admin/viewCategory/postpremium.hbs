@@ -54,7 +54,7 @@
                              <div class="dropdown">
                         <button class="dropbtn">Lọc</button>
                         <div class="dropdown-content">
-                            <a href="/admin/post/all">Tất cả</a>
+                            <a href="/admin/post/all">Xuất bản</a>
                             <a href="/admin/post/premium">Premium</a>
                             <a href="/admin/post/choxuatban">Chờ xuất bản</a>
                         </div>
@@ -72,7 +72,7 @@
 								</div>
 								<h3 class="post-title"><a href="/post/view/{{PostID}}">{{TieuDe}}</a></h3>
 								<p>{{TomTat}}</p>
-                                 <button type="submit" class="btn btn-primary">
+                                 <button type="submit" class="btn btn-primary"  onclick="window.location.href = '/admin/post/edit/{{PostID}}@{{Premium}}@{{TrangThai}}'">
                                     <i class="fa fa-edit" aria-hidden="true" ></i>
                                     Quản lý
                                 </button>     

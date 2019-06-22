@@ -23,6 +23,7 @@ app.get('/home', (req, res) => {
 
 app.use('/admin', require('./routes/admin/admin.route'));
 app.use('/writer', require('./routes/writer/writer.route'));
+app.use('/editer', require('./routes/editer/editer.route'));
 app.use('/account', require('./routes/account/signup.route'));
 app.use('/post', require('./routes/index/post.route'));
 

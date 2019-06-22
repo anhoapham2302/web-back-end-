@@ -32,7 +32,7 @@
 
 						<!-- nav -->
 							<ul class="nav-menu nav navbar-nav">
-								<li><a href="index.html">Trang chủ</a></li>
+							
 								{{#each this.parents}}
 								<li class="cat-{{CatID}}"><a href="/post/category/{{CatID}}">{{CatName}}</a>
 								<ul>
@@ -53,9 +53,15 @@
 							    Chào {{authUser.UName}} <span class="caret"></span>
 							  </button>
 							  <ul class="dropdown-menu" role="menu">
-							    <li><a href="login.html">Xem hồ sơ</a></li>
-								{{#if isQuanly}}
-							    <li><a href="/{{authUser.RoleEng}}/dashboard">Quản lý</a></li>
+							    <li><a href="/account/profile">Xem hồ sơ</a></li>
+								{{#if isAdmin}}
+							    <li><a href="/admin/user">Quản lý</a></li>
+								{{/if}}
+								{{#if isWriter}}
+							    <li><a href="/writer/allpost">Quản lý</a></li>
+								{{/if}}
+								{{#if isEditer}}
+							    <li><a href="/editer/allpost">Quản lý</a></li>
 								{{/if}}
 							    <li><a href="javascript: $('#frmSignout').submit();">Đăng xuất</a></li>							
 							  </ul>

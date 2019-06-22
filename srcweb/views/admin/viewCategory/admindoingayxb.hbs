@@ -1,68 +1,78 @@
-
+{{#each post}}
                 <div class="form-panel">
                 <div class=" form">
                     <form class="cmxform form-horizontal style-form" id="commentForm" method="POST">
+                         <div class="form-group ">
+                        <label for="cname" class="control-label col-lg-2">Tác giả</label>
+                        <div class="col-lg-10">
+                        <input readonly class=" form-control" style="height: 35px; width:700px;"id="cname" name="" minlength="2" type="text" value="{{UName}}" required />
+                        </div>
+                    </div>
                     <div class="form-group ">
                         <label for="cname" class="control-label col-lg-2">Tiêu đề</label>
                         <div class="col-lg-10">
-                        <input class=" form-control" style="height: 35px; width:700px;"id="cname" name="tieude" minlength="2" type="text" required />
+                            <input type="hidden" name="PostID" value="{{PostID}}">
+                        <input readonly class=" form-control" style="height: 35px; width:700px;"id="cname" name="tieude" minlength="2" type="text" value="{{TieuDe}}" required />
                         </div>
                     </div>
                     <div class="form-group ">
                         <label for="cname" class="control-label col-lg-2">Nội dung ngắn</label>
                         <div class="col-lg-10">
-                        <input class=" form-control" style="height: 35px; width:700px;" id="cname" name="noidungngan" minlength="2" type="text" required />
+                        <input readonly class=" form-control" style="height: 35px; width:700px;" id="cname" name="noidungngan" minlength="2" type="text" value="{{TomTat}}"required />
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="cemail" class="control-label col-lg-2">Chuyên mục cha</label>
                         <div class="col-lg-10">
-                            <select class=" form-control" name="category">
-                                <option value="">Chọn</option>
-                                {{#each parents}}
+                            <select readonly class=" form-control" name="category">
+                
                                 <option value="{{CatID}}">{{CatName}}</option>
-                                {{/each}}
+               
                             </select>
                         </div> 
                     </div>
                     <div class="form-group">
                         <label for="cemail" class="control-label col-lg-2">Chuyên mục con</label>
                         <div class="col-lg-10">
-                            <select class=" form-control" name="childcategory">
-                                <option value="">Chọn</option>
-                                {{#each     childs}}
+                            <select readonly class=" form-control" name="childcategory">
+                            
                                 <option value="{{ChildID}}">{{ChildName}}</option>
-                                {{/each}}
+                     
                             </select>
                         </div> 
-                    </div>
-                     <div class="form-group ">
-                        <label for="curl" class="control-label col-lg-2">Loại</label>
-                        <div class="col-lg-10">
-                        <input class="form-control "  style="height: 35px; width:700px;" id="curl" type="text" name="type" required/>
-                        </div>
                     </div>
                     <div class="form-group ">
                         <label for="curl" class="control-label col-lg-2">Ảnh bìa</label>
                         <div class="col-lg-10">
-                        <input class="form-control "  style="height: 35px; width:700px;" id="curl" type="text" name="anhbia" required/>
+                        <input readonly class="form-control "  style="height: 35px; width:700px;" id="curl" type="text" name="anhbia" value = "{{AnhBia}}"required/>
                         </div>
                     </div>
                      <div class="form-group">
                         <label for="curl" class="control-label col-lg-2">Nội dung</label>
                          <div class="col-lg-10">
-                        <textarea class="form-control" style="height: 500px; width:700px;" id="txtFullDes" name="FullDes"></textarea>
+                        <textarea readonly class="form-control" style="height: 500px; width:700px;" id="txtFullDes" name="FullDes">{{NoiDung}}</textarea>
                          </div>
                      </div>
+                     <div class="form-group">
+                         <label class="col-lg-2 control-label">Ngày xuất bản:</label>
+                         <div class="col-lg-10">
+                         <input class="form-control" type="text" id="txtDOB" name="ngayxb"style="height: 35px; width:300px;">  
+                        </div>
+                       </div>            
                      <div class="form-group ">
                         <label for="curl" class="control-label col-lg-2"></label>
                         <div class="col-lg-10">                            
-                          <button type="submit" class="btn btn-success center-block" onclick="window.location.href = '/writer/allpost'">                                  
-                                    Đăng bài
+                          <button type="submit" class="btn btn-success center-block">                                  
+                                   Dời
                                 </button>     
+                        
+                        </div>
+                    </div>
+                    
+
                         </div>
                     </div>
                     
                       </div>
                     </div>
-                  
+    {{/each}}            

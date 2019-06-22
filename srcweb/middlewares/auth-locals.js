@@ -10,6 +10,14 @@ module.exports = (req, res, next) => {
       {
           res.locals.isAdmin = true;
       }   
+      if(req.user.URole == 2)
+      {
+          res.locals.isEditer = true;
+      }   
+      if(req.user.URole == 3)
+      {
+          res.locals.isWriter = true;
+      }   
     }
 
     next();

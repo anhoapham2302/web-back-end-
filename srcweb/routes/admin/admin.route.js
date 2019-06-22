@@ -104,7 +104,7 @@ router.get('/category/:id/childcategory', (req, res)=>{
 
 router.get('/tag/edit/:id', (req, res) => {
     var id = req.params.id;
-   
+    res.locals.tagactive = true;
     tagModel.single(id).then(rows => {
         res.render('admin/viewCategory/edit-tags', {
           tag: rows[0],
@@ -119,7 +119,7 @@ router.get('/tag/edit/:id', (req, res) => {
 
   router.get('/childcategory/edit/:id', (req, res) => {
     var id = req.params.id;
-   
+    res.locals.cateactive = true;
     childcategoryModel.single(id).then(rows => {
         res.render('admin/viewCategory/edit-childcat', {
           child: rows[0],
@@ -134,6 +134,7 @@ router.get('/tag/edit/:id', (req, res) => {
   
   
 router.post('/category/update', (req, res) => {
+  res.locals.cateactive = true;
     categoryModel.update(req.body)
       .then(n => {
         res.redirect('/admin/category');
@@ -144,6 +145,7 @@ router.post('/category/update', (req, res) => {
   });
   
   router.post('/childcategory/update', (req, res) => {
+    res.locals.cateactive = true;
     childcategoryModel.update(req.body)
       .then(n => {
         res.redirect('/admin/category');
@@ -157,6 +159,7 @@ router.post('/category/update', (req, res) => {
   
 
 router.get('/category/add', (req, res) => {
+  res.locals.cateactive = true;
     res.render('admin/viewCategory/add',{layout: 'admin.hbs'});
   })
   
@@ -199,7 +202,7 @@ router.post('/category/add', (req, res) => {
 
   router.get('/tag', auth, (req, res)=> {
     var p = tagModel.all();
-    res.locals.cateactive = true;
+    res.locals.tagactive = true;
     p.then(rows => {
         res.render('admin/viewCategory/tag', {
             tag: rows,
@@ -213,6 +216,7 @@ router.post('/category/add', (req, res) => {
 });
 
 router.post('/tag/delete', (req, res) => {
+  
     tagModel.delete(req.body.TagID)
       .then(n => {
         res.redirect('/admin/tag');
@@ -241,6 +245,7 @@ router.post('/tag/delete', (req, res) => {
   });
 
   router.get('/user/:id@:role',auth, (req, res)=>{
+    res.locals.useractive = true;
     var id = req.params.id;    
     var role = req.params.role;
     if(role == 1)
@@ -269,5 +274,97 @@ router.post('/tag/delete', (req, res) => {
       console.log(err);
     })    
   })
+
+  router.get('/post/edit/:id@:type@:status', auth,(req, res, next) => {
+    var id = req.params.id;
+    var status = req.params.status;
+    var type = req.params.type;
+    console.log(status);
+    
+    
+    if(status == 1) 
+    {
+      postModel.singleByPostID(id).then(rows=>{
+        res.render('admin/viewCategory/xoabai', {post: rows, layout:'admin.hbs'})
+      })
+    };
+    if(status == 2) 
+    {
+      postModel.singleByPostID(id).then(rows=>{
+        res.render('admin/viewCategory/adminduyet-tuchoi', {post: rows, layout:'admin.hbs'})
+      })
+    };
+    if(status == 5) 
+    {
+      postModel.singleByPostID(id).then(rows=>{
+        res.render('admin/viewCategory/admindoingayxb', {post: rows, layout:'admin.hbs'})
+      })
+    };
+    
+    console.log(res.locals.ChoDuyet);
+    
+
+   
+  });
+
+  router.post('/post/edit/:id@:type@:status', auth, (req, res, next) => {
+    var uid = req.user.UID;
+    
+    var entity = {
+        PostID: req.body.PostID,
+        TieuDe: req.body.tieude,
+        AnhBia: req.body.anhbia,
+        TomTat: req.body.noidungngan,
+        //ChuyenMuc1: req.body.category,
+        //ChuyenMuc2: req.body.childcategory,
+        NguoiDuyet: uid,
+        NoiDung: req.body.FullDes,
+        TrangThai: 1,
+        NgayXuatBan: req.body.ngayxb,
+        Premium: 'Normal'
+    }
+  
+   
+    console.log(entity);
+    
+    postModel.update(entity).then(id => {
+      res.redirect('/admin/post/allpost');
+  });
+  })
+
+  router.post('/post/tuchoi', auth, (req, res, next) => {
+    var uid = req.user.UID;
+    
+    var entity = {
+        PostID: req.body.PostID,
+        TieuDe: req.body.tieude,
+        AnhBia: req.body.anhbia,
+        TomTat: req.body.noidungngan,
+        //ChuyenMuc1: req.body.category,
+        //ChuyenMuc2: req.body.childcategory,
+        NguoiDuyet: uid,
+        NoiDung: req.body.FullDes,
+        TrangThai: 3,
+        NgayXuatBan: null,
+        Premium: 'Normal'
+    }
+  
+   
+    console.log(entity);
+    
+    postModel.update(entity).then(id => {
+      res.redirect('/admin/post/allpost');
+    });
+  });
+
+  router.post('/post/delete', auth, (req, res, next) => {
+    
+    
+    postModel.delete(req.body.PostID).then(id => {
+      res.redirect('/admin/post/allpost');
+    });
+  });
+
+  
 
 module.exports = router;

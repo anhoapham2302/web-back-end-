@@ -11,25 +11,21 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-2">
-							<img class="media-object" src="../img/author.png" alt="">
+							<img class="media-object" src="https://lh3.googleusercontent.com/tpsMag4kq1H81SPGEvqFMVrauGlDZWo4izfz9NVNn6T7vc3EMIOcVWTNqGv2y_waHrnLo9a2RZ3S9aLfdYIGtO4K8aCFgmHYPQVt2e3DbJYb_rjST0VF7VE1-9ZbOn6PXAPej5uJjfXmiZWGVFGuPfi1clFkOfrOQ3AOdWmmnyjGWgmA_-HbFjymmCZjzG1NLOXCGvjsUZOF7Ylp_5U1RaJqTaO7QuEiUVby-oD22Nejg9je41OpCWCrL2oyMyDBoDbnIUFS1z2WgLh2Z1Eg5KCDZdC3Los2lMBfqurs9oN8ZO_Pj9MgE6759xgbXgirFL1qQSuSrnhXWP9GPTAxDqt5egd33ysncyEaGK4R-ITZ_tmhkkt978i_3T_bnFGtWwVJdc0t57GsRAlCjAid6Or45-NJ8Blm_WxPxMhG28jbxHlPsBDhv4te0dBILJakHPR46z9duPK6aE-XDPj7BObkVkO8lZSO9NALHJwsNqCujNBeOj4JI6M_cnDqfNA16PDVlIuA927nqhdUaGGE7_zmjx8zbTsL_SutEAmg3nl7gXtvUmFfNHlSYGp1GHMwKfr-RX1mLQBo5YyQ4LpOt4C9QvyRcL4lx-wq-aHnM-vZCltlqdZ1nIVfVk65vCZpjY23t8zko0OKETh3lA9-BJWHuIxs884=s120-no" alt="">
 						</div>
 						<div class="col-md-8">
 							<div class="section-title"><h2>Thông tin</h2></div>
 							<div class="col-md-6">
 							<form>										
 										<p>Họ và tên: {{authUser.UName}}</p>	
-										<p>Email: {{authUser.UEmail}}</p>
-										<p>Địa chỉ: ...</p>
-										<p>Loại tài khoản: Phóng viên, Premium</p>
-									
+										<p>Email: {{authUser.UEmail}}</p>																	
+										<p>Ngày sinh: {{authUser.UDOBFormat}}</p>
 									</form>
 							</div>
 							<div class="col-md-6">
 							<form>										
 										
-										<p>Bút danh (nếu có): Ahihi</p>
-										<p>Số điện thoại: 0123456xxx</p>
-										<p>Địa chỉ: ...</p>
+										<p>Bút danh (nếu có): {{authUNick}}</p>			
 										<p>Ngày tạo: {{authUser.UDateCreateFormat}}</p>
 									</form>
 							</div>

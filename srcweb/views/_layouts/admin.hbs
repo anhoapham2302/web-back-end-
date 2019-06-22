@@ -32,7 +32,7 @@
 
 						<!-- nav -->
 							<ul class="nav-menu nav navbar-nav">
-								<li><a href="index.html">Trang chủ</a></li>
+							
 								{{#each this.parents}}
 								<li class="cat-{{CatID}}"><a href="/post/category/{{CatID}}">{{CatName}}</a>
 								<ul>
@@ -53,9 +53,15 @@
 							    Chào {{authUser.UName}} <span class="caret"></span>
 							  </button>
 							  <ul class="dropdown-menu" role="menu">
-							    <li><a href="login.html">Xem hồ sơ</a></li>
-								{{#if isQuanly}}
-							    <li><a href="signup.html">Quản lý</a></li>
+							    <li><a href="/account/profile">Xem hồ sơ</a></li>
+								{{#if isAdmin}}
+							    <li><a href="/admin/category">Quản lý</a></li>
+								{{/if}}
+								{{#if isWriter}}
+							    <li><a href="/writer/allpost">Quản lý</a></li>
+								{{/if}}
+								{{#if isEditer}}
+							    <li><a href="/editer/allpost">Quản lý</a></li>
 								{{/if}}
 							    <li><a href="javascript: $('#frmSignout').submit();">Đăng xuất</a></li>							
 							  </ul>
@@ -87,13 +93,15 @@
 	{{#if isAdmin}}
 	<a href="/admin/user" class="list-group-item list-group-item-action {{#if useractive}}active{{/if}}">Quản lý thành viên</a>
  	<a href="/admin/category" class="list-group-item list-group-item-action {{#if cateactive}}active{{/if}}">Quản lý chuyên mục</a>
-	<a href="/admin/tag" class="list-group-item list-group-item-action {{#if cateactive}}active{{/if}}">Quản lý tag</a>
+	<a href="/admin/tag" class="list-group-item list-group-item-action {{#if tagactive}}active{{/if}}">Quản lý tag</a>
   	<a href="/admin/post/all" class="list-group-item list-group-item-action {{#if postactive}}active{{/if}}">Quản lý bài viết</a>
 	{{/if}}
 	{{#if isWriter}}
-	<a href="/admin/user" class="list-group-item list-group-item-action {{#if useractive}}active{{/if}}">Bài chờ duyệt</a>
- 	<a href="/admin/category" class="list-group-item list-group-item-action {{#if cateactive}}active{{/if}}">Thêm bài viết</a>
-  	<a href="#" class="list-group-item list-group-item-action">Quản lý bài viết</a>
+	<a href="/writer/allpost" class="list-group-item list-group-item-action {{#if useractive}}active{{/if}}">Danh sách</a>
+ 	<a href="/writer/addpost" class="list-group-item list-group-item-action {{#if cateactive}}active{{/if}}">Đăng bài</a>
+	{{/if}}
+	{{#if isEditer}}
+	<a href="/editer/allpost" class="list-group-item list-group-item-action {{#if useractive}}active{{/if}}">Danh sách</a>
 	{{/if}}
 </div>
           </div>

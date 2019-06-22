@@ -10,7 +10,7 @@ module.exports = {
     },
   
     singleByUserName: userName => {
-      return db.load(`select *,DATE_FORMAT(UDateCreate, '%d-%m-%Y') UDateCreateFormat from user, role where UUsername = '${userName}' and URole = RoleID`);
+      return db.load(`select *,DATE_FORMAT(UDateCreate, '%d-%m-%Y') UDateCreateFormat, DATE_FORMAT(UDOB, '%d-%m-%Y') UDOBFormat from user, role where UUsername = '${userName}' and URole = RoleID`);
     },
   
     add: entity => {
